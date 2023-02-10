@@ -4,12 +4,12 @@
 
 tables : t
 
-cols : col1,col2…. (or a,b,c……)
+cols : col1,col2…. 
 
 ```sql
-SELECT * FROM t
-SELECT col1,col2... FROM t
-SELECT expression FROM t
+SELECT * FROM t #to select some columns
+SELECT col1,col2... FROM t #to select some columns
+SELECT expression FROM t #to select the expressions on columns (eg can be double a column or concatanation of two columns)
 select 1 from t #returns just value 1 repeated for all rows
 select col1*2 from t #returns twice the first column value
 ```
@@ -39,7 +39,7 @@ CREATE TABLE t (
 INSERT INTO t
   (`col1`, `col2`)
 VALUES
-  ('1', NULL),
+  ('1', 'a'),
   ('2', 'b'),
   ('3', 'c'),
   ('4', 'd'),
@@ -124,6 +124,7 @@ lets you get a certain number of rows
 lets you do the limit operation starting after the offset number
 
 ```sql
+#refer to countries.csv
 select * from countries
 where Country LIKE 'A%'
 limit 5
@@ -267,120 +268,7 @@ having aggregate_condition #this applies to aggr columns
 ```
 
 ```sql
-CREATE TABLE stu (
-  `student` VARCHAR(10),
-  `gender` VARCHAR(1),
-  `class` INTEGER,
-  `section` VARCHAR(1),
-  `marks` INTEGER
-);
-
-INSERT INTO stu
-  (`student`, `gender`, `class`, `section`, `marks`)
-VALUES
-  ('Buckie', 'F', '10', 'C', '49'),
-  ('Fonsie', 'F', '2', 'A', '48'),
-  ('Atlanta', 'F', '7', 'C', '87'),
-  ('Christa', 'F', '10', 'B', '85'),
-  ('Bettina', 'M', '5', 'D', '80'),
-  ('Mile', 'F', '3', 'B', '80'),
-  ('Natty', 'F', '8', 'A', '15'),
-  ('Marcela', 'F', '7', 'C', '92'),
-  ('Nicola', 'M', '8', 'B', '21'),
-  ('Madalena', 'F', '3', 'C', '56'),
-  ('Hinda', 'F', '10', 'A', '15'),
-  ('Aviva', 'M', '9', 'B', '100'),
-  ('Adolpho', 'M', '9', 'A', '94'),
-  ('Ann', 'F', '7', 'A', '93'),
-  ('Minni', 'F', '5', 'C', '91'),
-  ('Salomon', 'F', '12', 'B', '43'),
-  ('Roslyn', 'F', '7', 'A', '88'),
-  ('Krisha', 'F', '1', 'B', '44'),
-  ('Murry', 'F', '11', 'D', '17'),
-  ('Howey', 'M', '10', 'D', '54'),
-  ('Noland', 'M', '7', 'D', '88'),
-  ('Celestyn', 'F', '10', 'C', '80'),
-  ('Christal', 'F', '6', 'D', '2'),
-  ('Tilly', 'F', '12', 'D', '7'),
-  ('Leon', 'F', '8', 'C', '64'),
-  ('Sayer', 'F', '7', 'A', '76'),
-  ('Brock', 'F', '9', 'C', '49'),
-  ('Daryl', 'F', '5', 'C', '36'),
-  ('Niall', 'F', '5', 'D', '100'),
-  ('Frank', 'M', '5', 'B', '47'),
-  ('Wit', 'F', '11', 'A', '30'),
-  ('Mirilla', 'M', '8', 'B', '99'),
-  ('Erda', 'M', '6', 'A', '11'),
-  ('Vassili', 'M', '10', 'D', '76'),
-  ('Corenda', 'M', '8', 'A', '65'),
-  ('Nancey', 'M', '4', 'B', '61'),
-  ('Beniamino', 'M', '9', 'D', '40'),
-  ('Terri', 'F', '6', 'C', '76'),
-  ('Ardisj', 'M', '10', 'A', '88'),
-  ('Marj', 'F', '6', 'D', '60'),
-  ('Kenyon', 'M', '10', 'D', '76'),
-  ('Sunshine', 'M', '6', 'B', '8'),
-  ('Cicily', 'M', '1', 'A', '16'),
-  ('Karim', 'M', '11', 'B', '46'),
-  ('Wayne', 'F', '11', 'B', '85'),
-  ('Brittani', 'M', '3', 'B', '83'),
-  ('Madelina', 'F', '1', 'D', '39'),
-  ('Agosto', 'M', '1', 'A', '100'),
-  ('Trip', 'F', '9', 'B', '58'),
-  ('Phaidra', 'F', '4', 'C', '73'),
-  ('Emmeline', 'M', '8', 'B', '40'),
-  ('Vick', 'F', '1', 'C', '8'),
-  ('Kerstin', 'F', '7', 'D', '37'),
-  ('Teodor', 'M', '4', 'C', '7'),
-  ('Daron', 'F', '11', 'B', '62'),
-  ('Kerby', 'M', '12', 'B', '99'),
-  ('Jehu', 'M', '5', 'B', '44'),
-  ('Lindi', 'F', '10', 'A', '76'),
-  ('Janaya', 'F', '10', 'C', '50'),
-  ('Raffarty', 'M', '8', 'D', '51'),
-  ('Dieter', 'M', '6', 'C', '50'),
-  ('Alfons', 'F', '7', 'B', '88'),
-  ('Tedi', 'M', '3', 'A', '6'),
-  ('Cynthy', 'M', '1', 'B', '77'),
-  ('John', 'M', '3', 'A', '13'),
-  ('Delilah', 'M', '10', 'C', '78'),
-  ('Andonis', 'M', '10', 'C', '28'),
-  ('Maudie', 'F', '4', 'C', '82'),
-  ('Staffard', 'F', '5', 'A', '77'),
-  ('Edmund', 'M', '1', 'A', '75'),
-  ('Wallis', 'F', '12', 'C', '3'),
-  ('Sheridan', 'F', '2', 'B', '8'),
-  ('Prent', 'F', '5', 'A', '80'),
-  ('Guinna', 'M', '4', 'C', '48'),
-  ('Paolina', 'M', '5', 'C', '54'),
-  ('Rebbecca', 'M', '8', 'D', '93'),
-  ('Marjorie', 'M', '9', 'C', '43'),
-  ('Fremont', 'M', '4', 'A', '10'),
-  ('Bard', 'M', '10', 'C', '16'),
-  ('Harlen', 'M', '4', 'C', '28'),
-  ('Brietta', 'F', '8', 'A', '48'),
-  ('Uta', 'F', '1', 'D', '18'),
-  ('Gal', 'F', '4', 'C', '32'),
-  ('Krysta', 'F', '11', 'B', '43'),
-  ('Corri', 'F', '9', 'C', '59'),
-  ('Annaliese', 'F', '5', 'D', '30'),
-  ('Erskine', 'M', '9', 'C', '56'),
-  ('Arther', 'F', '10', 'C', '25'),
-  ('Tiffanie', 'M', '5', 'D', '90'),
-  ('Vita', 'M', '11', 'D', '45'),
-  ('Belle', 'M', '6', 'B', '17'),
-  ('Christabel', 'M', '1', 'B', '12'),
-  ('Cayla', 'F', '10', 'B', '91'),
-  ('Elia', 'F', '7', 'D', '4'),
-  ('Elfrieda', 'M', '8', 'B', '89'),
-  ('Alexio', 'M', '3', 'D', '1'),
-  ('Bettina', 'M', '2', 'D', '67'),
-  ('Enoch', 'M', '6', 'B', '29'),
-  ('Arleta', 'M', '3', 'C', '39'),
-  ('Artie', 'F', '11', 'C', '38');
-```
-
-```sql
+#refer to students.sql
 select class,section,count(*) as total_in_class
 from stu
 group by class, section
@@ -393,13 +281,50 @@ order by class, section
 if takes three args, first is condition and the value is second arg if the condition is true else the third arg
 
 ```sql
+#syntax
 select col, IF(cond,cond_true_expr,cond_false_expr)
 from tb
+```
+
+```sql
+#creation
+CREATE TABLE info (
+  `first_name` VARCHAR(8),
+  `age` INTEGER
+);
+
+INSERT INTO info
+  (`first_name`, `age`)
+VALUES
+  ('Delmor', '20'),
+  ('Rena', '20'),
+  ('Bonni', '3'),
+  ('Korrie', '27'),
+  ('Abagael', '3'),
+  ('Chloette', '28'),
+  ('Mar', '29'),
+  ('Elwin', '19'),
+  ('Johann', '28'),
+  ('Kelly', '22'),
+  ('Catlee', '11'),
+  ('Vonnie', '25'),
+  ('Fionnula', '7'),
+  ('Jermaine', '7'),
+  ('Ruby', '4');
+
+```
+
+```sql
+#query
+
+SELECT first_name as name, if(age>=18, 'adult', 'minor')
+from info
 ```
 
 ## Case
 
 ```sql
+#syntax
 CASE
     WHEN condition1 THEN result1
     WHEN condition2 THEN result2
@@ -409,6 +334,39 @@ END;
 ```
 
 ```sql
+#creation
+CREATE TABLE marks (
+  `student` VARCHAR(10),
+  `marks` INTEGER
+);
+
+INSERT INTO marks
+  (`student`, `marks`)
+VALUES
+  ('Ewan', '10'),
+  ('Brenn', '42'),
+  ('Ferdinanda', '24'),
+  ('Rozele', '69'),
+  ('Guthrie', '79'),
+  ('Francene', '68'),
+  ('Darcey', '77'),
+  ('Jerry', '19'),
+  ('Jehu', '89'),
+  ('Joanne', '32'),
+  ('Reeta', '3'),
+  ('Ros', '90'),
+  ('Lorianna', '70'),
+  ('Hanna', '60'),
+  ('Ulberto', '4'),
+  ('Faustina', '35'),
+  ('Otho', '47'),
+  ('Francklin', '40'),
+  ('Otes', '48'),
+  ('Zaneta', '58');
+```
+
+```sql
+#query
 select 
   student,
   marks,
@@ -419,7 +377,7 @@ select
     WHEN marks<80 THEN 'B'
     ELSE 'A'
   END as grade
-from stu
+from marks
 ```
 
 ## Join
@@ -433,7 +391,7 @@ JOIN  →
 
 1. output table with schema from both
 2. Cross
-3. apply the join condition as a filter
+3. apply the join condition (predicate) as a filter
 4. see if it is left.right.inner
 
 ```sql
