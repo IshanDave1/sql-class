@@ -385,7 +385,8 @@ from marks
 1. output table gets all columns from the first and the second table
 2. works as a filter on a cross
 
-![Untitled](SQL%207af36ad707984736b98c5d2f464267dc/Untitled.png)
+![join](./img/join.png)
+
 
 JOIN  →
 
