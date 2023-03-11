@@ -320,7 +320,9 @@ db.collection_name.find({$and: [{prd1},{prd2}]})
         ```
         {$project : {alias : {expr}}} //1 to include 0 to exclude
         
-        db.c3.aggregate([{$project : {_id : 0 , v : 1, v2 : 1,v1_sum_v2 : {$multiply : ["$v","$v2"]}}}])
+        db.c3.aggregate([{$project : {_id : 0 , v : 1, v2 : 1,v1_sum_v2 : {$sum : ["$v","$v2"]}}}])
+        
+        db.c3.aggregate([{$project : {_id : 0 , v : 1, v2 : 1,v1_product_v2 : {$multiply : ["$v","$v2"]}}}])
         ```
         
     
